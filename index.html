@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor del Campamento</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header>
+        <!--Enlaces de ancla (href con '#') para hacer scroll fluido hacia los ID de cada sección.-->
+        <nav>
+            <div class="logo">Gestor del Campamento</div>
+            <ul class="menu">
+                <li><a href="#seccion-reclutar">Reclutar</a></li>
+                <li><a href="#seccion-grupo">Mi Grupo</a></li>
+                <li><a href="#seccion-compendio">Compendio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Uso de la clase 'contenedor' que en CSS divide la pantalla mediante un layout de grid.-->
+    <main class="contenedor">
+        
+        <section id="seccion-reclutar" class="formulario">
+            <h2>Reclutar nuevo personaje</h2>
+             <!--Capturamos el ID 'formulario-personaje' en JS para escuchar el evento 'submit' e interceptar la recarga de la página.-->
+            <form id="formulario-personaje">
+                
+                <div class="form-grupo">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" required placeholder="Ej: Corazón Sombrío">
+                </div>
+
+                <div class="form-grupo">
+                    <label for="raza">Raza:</label>
+                    <!--Se utilizan etiquetas select para restringir las opciones y evitar errores de tipeo por parte del usuario.-->
+                    <select id="raza" required>
+                        <option value="">Selecciona una raza...</option>
+                        <option value="Elfo">Elfo</option>
+                        <option value="Semi-elfo">Semi-elfo</option>
+                        <option value="Tiflin">Tiflin</option>
+                        <option value="Humano">Humano</option>
+                        <option value="Dracónido">Dracónido</option>
+                    </select>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="clase">Clase:</label>
+                    <select id="clase" required>
+                        <option value="">Selecciona una clase...</option>
+                        <option value="Clérigo">Clérigo</option>
+                        <option value="Pícaro">Pícaro</option>
+                        <option value="Mago">Mago</option>
+                        <option value="Guerrero">Guerrero</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-reclutar">Añadir al grupo</button>
+            </form>
+        </section>
+
+        <section id="seccion-grupo" class="party-section">
+            <h2>Miembros del Grupo</h2>
+            <!--Este contenedor está vacío en el HTML. JavaScript se encarga de inyectar aquí las tarjetas con los datos de los
+            personajes.-->
+            <div id="lista-personajes" class="grid-personajes"></div>
+        </section>
+
+        <section id="seccion-compendio" class="party-section">
+            <h2>Compendio de Objetos</h2>
+            <!--Este botón tiene un ID específico para disparar la petición asincrónica al archivo JSON externo.-->
+            <button id="btn-cargar-compendio" class="btn-reclutar" style="margin-bottom: 1.5rem; width: auto; padding: 0.5rem 1rem;">
+                Abrir Compendio Mágico
+            </button>
+            <div id="lista-compendio" class="grid-personajes"></div>
+        </section>
+        
+    </main>
+
+    <!--Se colocan al final del body para garantizar que la interfaz HTML cargue visualmente antes de ejecutar la lógica.-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

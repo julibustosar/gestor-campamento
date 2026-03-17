@@ -1,0 +1,209 @@
+/* Importamos esta fuente de Google Fonts a través del siguiente link:*/
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Lora:wght@400;600&display=swap');
+
+:root {
+    /* Paleta de colores principal inspirada en la del juego Baldur's Gate 3. Almacenada en variables. */
+    --bg-profundo: #0d0b0a;
+    --bg-paneles: #1e1915;
+    --texto-pergamino: #d8cbb8;
+    --oro-antiguo: #c9a45c;
+    --oro-brillante: #e3c485;
+    --rojo-bg3: #6e1111;
+    --rojo-bg3-hover: #8c1616;
+    --borde-oscuro: #3a2f24;
+}
+
+/* Estilos base del body y fondo de la página */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /* Permite navegación fluida al usar enlaces ancla */
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-profundo);
+    color: var(--texto-pergamino);
+    font-family: 'Lora', serif;
+    background-image: radial-gradient(circle at center, #1a1512 0%, #0d0b0a 100%);
+    min-height: 100vh;
+}
+
+/* Tipografía decorativa para encabezados */
+h1, h2, h3, .logo {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+}
+
+/* Estilo del encabezado y el menú de navegación */
+header {
+    background-color: var(--bg-paneles);
+    padding: 1rem 2rem;
+    border-bottom: 2px solid var(--oro-antiguo);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    color: var(--oro-antiguo);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.menu a {
+    color: var(--texto-pergamino);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.menu a:hover {
+    color: var(--oro-brillante);
+    text-shadow: 0 0 8px rgba(201, 164, 92, 0.4);
+}
+
+/* Estructura de las dos secciones principales: reclutar y el equipo actual. */
+.contenedor {
+    max-width: 1050px;
+    margin: 2.5rem auto;
+    padding: 0 1.5rem;
+    display: grid;
+    /* Divide la pantalla: 1 fracción izquierda, 2 fracciones derecha */
+    grid-template-columns: 1fr 2fr;
+    gap: 2.5rem;
+}
+
+/* Estilos de formulario y tarjetas con la información de los personajes. */
+.formulario, .tarjeta-personaje {
+    background-color: var(--bg-paneles);
+    padding: 1.8rem;
+    border-radius: 4px;
+    border: 1px solid var(--borde-oscuro);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 4px 8px rgba(0,0,0,0.6);
+}
+
+.formulario h2, .party-section h2 {
+    margin-bottom: 1.5rem;
+    color: var(--oro-antiguo);
+    border-bottom: 1px solid var(--borde-oscuro);
+    padding-bottom: 0.8rem;
+    text-align: center;
+}
+
+.form-grupo {
+    margin-bottom: 1.2rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--oro-antiguo);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+input, select {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 3px;
+    border: 1px solid var(--borde-oscuro);
+    background-color: var(--bg-profundo);
+    color: var(--texto-pergamino);
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--oro-antiguo);
+    box-shadow: 0 0 5px rgba(201, 164, 92, 0.3);
+}
+
+/* Botones principales de acción */
+.btn-reclutar {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    background-color: var(--rojo-bg3);
+    color: var(--texto-pergamino);
+    border: 1px solid #4a0b0b;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-reclutar:hover {
+    background-color: var(--rojo-bg3-hover);
+    border-color: var(--oro-antiguo);
+}
+
+/* Botón secundario inyectado vía JS para eliminar datos de forma visual y en almacenamiento local.*/
+.btn-eliminar {
+    margin-top: 1rem;
+    background-color: var(--borde-oscuro);
+    color: var(--texto-pergamino);
+    border: 1px solid var(--oro-antiguo);
+    padding: 0.5rem;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    border-radius: 3px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-eliminar:hover {
+    background-color: var(--rojo-bg3-hover);
+    color: #fff;
+}
+
+.grid-personajes {
+    display: grid;
+    /* Rejilla responsive: se adapta al ancho de las tarjetas */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.tarjeta-personaje {
+    border-top: 3px solid var(--oro-antiguo);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.tarjeta-personaje h3 {
+    color: var(--oro-brillante);
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+    border-bottom: 1px dashed var(--borde-oscuro);
+    padding-bottom: 0.5rem;
+}
+
+.tarjeta-personaje p {
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+}
+
+.tarjeta-personaje strong {
+    color: var(--oro-antiguo);
+}

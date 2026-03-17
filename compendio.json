@@ -1,0 +1,20 @@
+[
+    {
+        "nombre": "Espadón Astral",
+        "tipo": "Arma",
+        "rareza": "Legendario",
+        "descripcion": "Una espada de plata que brilla con la luz de mil estrellas."
+    },
+    {
+        "nombre": "Poción de Curación Mayor",
+        "tipo": "Consumible",
+        "rareza": "Raro",
+        "descripcion": "Cura 4d4 + 4 Puntos de Golpe al instante."
+    },
+    {
+        "nombre": "Pergamino de Bola de Fuego",
+        "tipo": "Hechizo",
+        "rareza": "Poco Común",
+        "descripcion": "Lanza una explosión de fuego en un radio de 6 metros."
+    }
+]
