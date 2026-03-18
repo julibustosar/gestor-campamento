@@ -6,7 +6,7 @@ let miGrupo = []; // Almacena el estado actual de los personajes en memoria
  * Evita la pérdida de información tras recargar la página.
  */
 function cargarPartida() {
-    const datosGuardados = localStorage.getItem('grupoAventureros');
+    const datosGuardados = localStorage.getItem('campamento_bg3');
     if (datosGuardados) {
         miGrupo = JSON.parse(datosGuardados);
         // Renderiza el grupo inicial sin animaciones para optimizar la carga
@@ -51,7 +51,7 @@ $('#formulario-personaje').on('submit', function(evento) {
 
     // Actualiza el estado global y sincroniza con el LocalStorage
     miGrupo.push(nuevoPersonaje);
-    localStorage.setItem('grupoAventureros', JSON.stringify(miGrupo));
+    localStorage.setItem('campamento_bg3', JSON.stringify(miGrupo));
     
     dibujarTarjeta(nuevoPersonaje, true);
     this.reset(); // Limpia los campos tras un registro exitoso
@@ -66,7 +66,7 @@ $('#lista-personajes').on('click', '.btn-eliminar', function() {
     
     if (confirmacion) {
         const tarjeta = $(this).parent();
-        const idEliminar = tarjeta.data('id');
+        const idEliminar = String(tarjeta.attr('data-id'));
 
         // Secuencia asíncrona: primero la animación, luego la destrucción del nodo
         tarjeta.fadeOut(600, function() {
@@ -74,8 +74,8 @@ $('#lista-personajes').on('click', '.btn-eliminar', function() {
         });
 
         // Actualiza el estado global descartando el elemento eliminado y guarda cambios
-        miGrupo = miGrupo.filter(personaje => personaje.id !== idEliminar);
-        localStorage.setItem('grupoAventureros', JSON.stringify(miGrupo));
+        miGrupo = miGrupo.filter(personaje => String(personaje.id) !== idEliminar);
+        localStorage.setItem('campamento_bg3', JSON.stringify(miGrupo));
     }
 });
 
